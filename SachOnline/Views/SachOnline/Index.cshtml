@@ -1,0 +1,62 @@
+﻿﻿
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<SachOnline.Models.SACH>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ LayoutUser.cshtml";
+}
+<h2 class="text-center">SÁCH MỚI</h2>
+<hr>
+
+<div class="row text-center">
+    @foreach (var sach in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 sp">
+            <div class="thumbnail">
+                <img src="~/Images/@sach.AnhBia" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook size">
+                <div class="caption">
+                    <h4 class="ten">
+                        <a href="@Url.Action("ChiTietSach", "SachOnline", new { id = sach.MaSach })">@sach.TenSach</a>
+                    </h4>
+                    <p>
+                        <a href="javascript:void(0);" onclick="addToCart(@sach.MaSach)" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<nav class="text-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</nav>
+<!--
+
+
+<nav class="text-center">
+    <ul class="pagination">
+
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+    -->

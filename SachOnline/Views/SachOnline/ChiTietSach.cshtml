@@ -1,0 +1,55 @@
+﻿﻿
+@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_ LayoutUser.cshtml";
+}
+<style>
+    .tensach {
+        text-align: center;
+        font-family: Tahoma;
+        font-size: 22px;
+        font-weight: bolder;
+        text-transform: uppercase;
+        height: 30px;
+        padding: 25px 0px 50px 0px;
+    }
+
+    .anh {
+        float: left;
+        width: 350px;
+        padding: 0px 20px;
+    }
+
+    .motasach {
+        text-align: justify;
+        padding-right: 50px;
+        height: 280px;
+        font-size: 17px;
+    }
+
+    .khoiA {
+        float: right;
+        padding: 0px 80px;
+        font-size: 15px;
+    }
+</style>
+
+<div class="thumbnail">
+    <h4 class="tensach">@Model.TenSach</h4>
+    <img style="height:400px;" class="anh" src="~/Images/@Model.AnhBia" alt="@Model.TenSach" />
+    <div class="motasach">
+        <p>
+            @Html.Raw(Model.MoTa.ToString().Replace("\n", "</p><p>/&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </p>
+    </div>
+
+    <div class="khoiA">
+        <p class="ngaycapnhat"><b>Ngày cập nhật:</b> <i>@Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</i></p>
+        <p class="giaban"><b>Giá bán:</b> <span style="color:blue; font-size:25px; font-family:Tahoma; font-style:italic; font-weight:800;">@Html.FormatValue(@Model.GiaBan, "{0:#,##0}")VNĐ</span></p>
+        <p>
+            <a href="javascript:void(0);" onclick="addToCart(@Model.MaSach)" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+            </a>
+        </p>
+    </div>
+</div>

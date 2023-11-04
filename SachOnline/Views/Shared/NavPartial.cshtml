@@ -1,0 +1,100 @@
+﻿﻿
+<style>
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 100px;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        border: hidden;
+    }
+
+    .logo img {
+        width: 300px;
+    }
+
+    .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar li {
+        position: relative;
+        margin-right: 40px;
+        text-transform: uppercase;
+    }
+
+    .navbar a {
+        font-size: 18px;
+        color: #080908;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 20px 10px;
+    }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: black;
+            transition: .3s;
+        }
+
+    .navbar li:hover a::before {
+        width: 100%;
+    }
+
+    .search {
+        background: transparent;
+        border: solid 1px;
+        color: #9f9f9f;
+        font-size: 14px;
+        width: 179px;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 15px 0 10px;
+        margin-right: 20px;
+        border-radius: 0% 20px;
+    }
+
+    .search-submit {
+        width: 50px;
+        height: 50px;
+        border: none;
+    }
+
+        .search-submit:hover {
+            background-color: darkgray;
+        }
+</style>
+<header class="header">
+    <a href="~/" class="logo"><img src="~/Images/LOGO.png" /></a>
+    <nav class="navbar">
+        <ul>
+            <li><a href="~/">Home</a></li>
+            <li>
+                @using (Html.BeginForm("TimKiem", "SachOnline", FormMethod.Post))
+                {
+                    <input class="search" type="text" name="tuKhoa" placeholder="Tìm sách..." required />
+                    <button class="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                }
+            </li>
+            <li><a href="~/User/dangnhap"><i class="fa-solid fa-right-to-bracket"> </i> Login</a></li>
+            <li><a href="~/User/dangky"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+            <li>
+                @Html.Action("GioHangPartial", "GioHang")
+            </li>
+        </ul>
+    </nav>
+</header>

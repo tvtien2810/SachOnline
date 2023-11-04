@@ -1,0 +1,41 @@
+﻿﻿
+<style>
+    .nav-link {
+        margin-left: 20px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
+    <div class="container">
+        <a class="navbar-brand" href="/" style="font-weight:700;">
+            SACHONLINE
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="true">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-dark nav navbar-nav ">
+                <li class="active"><a class="nav-link" href="/">TRANG CHỦ</a> </li>
+                <li><a class="nav-link" href="#">GIỚI THIỆU</a> </li>
+                <li><a class="nav-link" href="#">LIÊN HỆ</a> </li>
+            </ul>
+            <ul class="navbar-dark nav navbar-nav navbar-right">
+                @Html.Action("LoginLogout", "SachOnline")
+                @Html.Action("GioHangPartial", "GioHang")
+            </ul>
+            <ul class="navbar-dark nav navbar-nav navbar-left">
+                <li>
+                    @using (Html.BeginForm("TimKiem", "SachOnline", FormMethod.Post, new { @class = "navbar-form" }))
+                    {
+                        <div class="input-group">
+                            <input class="form-control search" type="text" name="tuKhoa" placeholder="Tìm sách..." required />
+                            <span class="input-group-btn bg-danger">
+                                <button class="btn search-submit" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </span>
+                        </div>
+                    }
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
